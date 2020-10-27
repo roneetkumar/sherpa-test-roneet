@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import { BASE_URL } from '../constants';
+
 
 
 const EventStyles = styled.div`
@@ -10,8 +12,8 @@ const EventStyles = styled.div`
     text-align: center;
     padding: 30px;
     margin: 30px;
-    border: 2px solid #212121;
-
+    display:inline-block;
+    transition: all 400ms;
     .event{
         background: #eee;
         border-radius: 50px;
@@ -20,23 +22,34 @@ const EventStyles = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-    }
-    h1{
-        font-size: 46px;
-    }
-    h3{
-        font-size: 26px;
+        align-items: center;
+        padding: 10px;
+        h1{
+            font-size: 26px;
+        }
+        h3{
+            font-size: 26px;
+        }
+        img{
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+        }
     }
 `;
 
-const Event = () => {
- console.log('Event');
+const Event = ({ event, setMenu,setCurrentEvent, style }) => {
+    const eventClickhandler = () => {
+        setCurrentEvent(event?.id);
+        setMenu('events')
+    }
+
     return (
-        <EventStyles>
-            <div className="event">
-                <h1>Logo</h1>
-                <h3>Evnet</h3>
-                <span>Details</span>
+        <EventStyles style={style}>
+            <div className="event" onClick={eventClickhandler} >
+                <img src={`${BASE_URL}${event?.logo}`} alt={event?.title}/>
+                <h1>{event?.title}</h1>
+                <span>{event?.detail}</span>
             </div>
         </EventStyles>
     )

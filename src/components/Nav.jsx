@@ -1,5 +1,7 @@
-import React from 'react'
+import Axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
+import { BASE_URL } from '../constants';
 
 
 const NavStyles = styled.nav`
@@ -7,25 +9,41 @@ const NavStyles = styled.nav`
     border-radius: 20px;
     background: #eee;
     width: max-content;
+    position:absolute;
+    left: 20px;
+    top: 180px;
     .items{
         background: #fff;
-        padding: 10px 40px;
+        padding: 10px 60px;
         font-size: 22px;
         border-radius: 40px;
-        margin: 10px 0;
+        margin: 20px 0;
         text-align: center
     }
 `
 
-const Nav = () => {
+const Nav = ({ menus}) => {
+
+    const [menuItems, setMenuItems] = useState([]);
+
+    useEffect( () => {
+        (async() => {
+            const res = await (await Axios.get(`${BASE_URL}/menu/${menus}`)).data;
+            setMenuItems(res);
+        })();
+    },[menus])
+
+
+
+
  console.log('header');
     return (
         <NavStyles>
-            <div className="items">Companies</div>
-            <div className="items">Members</div>
-            <div className="items">Studio</div>
-            <div className="items">Events</div>
-            <div className="items">Meetings</div>
+            {
+                menuItems.map((item) => (
+                    <div className="items" key={item}>{item}</div>
+                ))
+            }
         </NavStyles>
     )
 }

@@ -13,6 +13,8 @@ const ProfileLogoStyles = styled.div`
     position:fixed;
     top:20px;
     right:20px;
+    z-index:2;
+
     span{
         font-size:24px;
     }

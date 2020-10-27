@@ -6,14 +6,25 @@ const HeadingStyles = styled.div`
     background: #eee;
     text-align: center;
     padding: 28px;
-    font-size: 26px;
+    font-size: ${props => props.menus === 'home' ? '28px' : '14px'};
+    transition: all 0.2s ease;
+    z-index: 1;
+    position: sticky;
+    top: 0;
 
-`;
 
-const Heading = () => {
+    `;
+
+const Heading = ({ setMenu, menus, setCurrentEvent }) => {
+
+    const headingClickHandler = () => {
+        setMenu('home');
+        setCurrentEvent(null);
+    }
+
     return (
-        <HeadingStyles>
-            <h1>Marketplace</h1>
+        <HeadingStyles menus={menus}>
+            <h1 onClick={headingClickHandler}>Marketplace</h1>
         </HeadingStyles>
     )
 }

@@ -5,5 +5,89 @@
 }
 
 
+body{
+  background: #e0e0e0;
+}
+
+.my-header-enter {
+  transform: translateY(-300px);
+  opacity: 0;
+}
+.my-header-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 400ms;
+}
+.my-header-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.my-header-exit-active {
+  transform: translateY(-300px);
+  opacity: 0;
+  transition: all 400ms;
+}
+
+
+.my-meetings-enter {
+  opacity: 1;
+}
+.my-meetings-enter-active {
+  opacity: 0;
+  transition: all 400ms;
+}
+
+.my-meetings-exit {
+  opacity: 1;
+}
+.my-meetings-exit-active {
+  opacity: 0;
+  transition: all 400ms;
+}
+
+
+
+.my-details-enter {
+  transform: translateX(-700px);
+}
+.my-details-enter-active {
+  transform: translateX(0);
+  transition: all 400ms;
+}
+.my-details-exit {
+  transform: translateX(0);
+}
+.my-details-exit-active {
+  transform: translateX(-700px);
+  transition: all 400ms;
+}
+
+
+.my-nav-enter {
+   transform: translateY(0);
+}
+.my-nav-enter-active {
+   transform: translateY(300px);
+  transition: all 300ms;
+}
+.my-nav-enter-done {
+    transform: translateY(300px);
+}
+
+.my-nav-exit {
+  transform: translateY(300px);
+}
+.my-nav-exit-active {
+  transform: translateY(0);
+  transition: all 300ms;
+}
+.my-nav-exit-done {
+   transform: translateY(0);
+}
+
+.my-header{
+  display: flex;
+}
+
 
 

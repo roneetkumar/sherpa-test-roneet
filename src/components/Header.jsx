@@ -15,7 +15,7 @@ const HeaderStyles = styled.header`
     }
 `;
 
-const Header = () => {
+const Header = ({ menus}) => {
  console.log('header');
     return (
         <HeaderStyles>
